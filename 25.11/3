@@ -1,0 +1,89 @@
+#include "stdafx.h" 
+#include <iostream> 
+using namespace std; 
+
+class Time{
+public:
+	int hour; int minute; int second;
+	Time(int h, int m, int s){
+		this->hour = h;
+		this->minute = m;
+		this->second = s;
+	}
+void setTime(int hour, int minute, int second)
+	{
+		this->hour = (hour>=0 && hour<24) ?hour : 0;
+		this->minute = (minute >= 0 && minute<60) ? minute : 0;
+		this->second = (second >= 0 && second<60) ? second : 0;
+
+	}
+int gethour()
+	{
+		return this->hour;
+	}
+int getminute()
+	{
+		return this->minute;
+	}
+int getsecond()
+	{
+		return this->second;
+	}
+void timeAPM ()
+{
+	cout<<(this->hour==0||this->hour==12 ?12 :this->hour%12);
+	cout<<":"<<(this->minute <10 ? "0":"")<<this->minute;
+	cout<<":"<<(this->second <10 ? "0":"")<<this->second;
+	cout<<(this->hour<12 ? " AM": " PM")<<endl;
+
+}
+};
+int _tmain()
+{
+	
+	setlocale(LC_ALL, "Russian");
+
+	int h; int m; int s;
+	cout << "Введите первое время" << endl;
+	cin >> h >> m >> s;
+	Time newTime(0, 0, 0);
+	newTime.setTime(h, m, s);
+
+	cout << "Введите второе время" << endl;
+	cin >> h >> m >> s;
+	Time newTime2(0, 0, 0);
+	newTime2.setTime(h, m, s);
+	Time newTemp(0,0,0);
+	//помещаем большее время в Time2
+	if ((newTime2.gethour()<newTime.gethour())||((newTime2.gethour()==newTime.gethour())&& ((newTime2.getminute()<newTime.getminute())))||(((newTime2.gethour()==newTime.gethour())&& ((newTime2.getminute()==newTime.getminute()))&&((newTime2.getsecond()<newTime.getsecond())))))
+	{
+		newTemp.setTime(newTime2.gethour(),newTime2.getminute(),newTime2.getsecond());
+		newTime2.setTime(newTime.gethour(),newTime.getminute(),newTime.getsecond());
+		newTime.setTime(newTemp.gethour(),newTemp.getminute(), newTemp.getsecond());
+	}
+	// В Time помещаем разницу во времени.
+	Time newTime3(0,0,0);
+	int dif=0;
+	int s3=0; int m3=0; int h3=0;
+	s3 = newTime2.getsecond() - newTime.getsecond(); 
+	if (s3 < 0) 
+	{ s3 += 60; dif = 1; } 
+	m3 = newTime2.getminute() - newTime.getminute() - dif; 
+dif = 0; 
+if (m3 < 0) 
+{ 
+m3 += 60; 
+dif = 1; 
+} 
+h3 = newTime2.gethour() - newTime.gethour() - dif; 
+	newTime3.setTime(abs(h3),abs(m3),abs(s3));
+	cout<<"Меньшее время"<<endl;
+	newTime.timeAPM();
+	cout<<"Большее время"<<endl;
+	newTime2.timeAPM();
+cout<<"Разница во времени равна";
+newTime3.timeAPM();
+
+	system("pause");
+	return 0;
+}
