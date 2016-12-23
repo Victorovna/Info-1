@@ -1,0 +1,51 @@
+#include "stdafx.h"
+#include "stdafx.h"
+
+#include <iostream>
+
+using namespace std;
+class Urav{
+public:
+	int a; int b; int c; float dis; float x1; float x2;
+	Urav(int a, int b, int c) {
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->dis = 0;
+		this->x1 = 0;
+		this->x2 = 0;
+	}
+	float getDis()
+	{
+		this->dis = (this->b)*(this->b) - 4 * (this->a)*(this->c);
+		return this->dis;
+	}
+	float getx1()
+	{
+		if ((this->dis) < 0) return 0;
+		this->x1 = ((this->b)*(-1) + sqrt(this->dis)) / 2 / this->a;
+		return this->x1;
+	}
+	float getx2()
+	{
+		if ((this->dis) < 0) return 0;
+		this->x2 = ((this->b)*(-1) - sqrt(this->dis)) / 2 / this->a;
+		return this->x2;
+	}
+};
+int _tmain()
+{
+	int a; int b; int c;
+	setlocale(LC_ALL, "Russian");
+	cin >> a >> b >> c;
+	Urav newUrav(a, b, c);
+	if (newUrav.getDis() < 0)
+	{
+		cout << "нет действительных корней";
+		return 0;
+	}
+	cout <<"Discriminant= "<< newUrav.getDis() <<" X1= "<< newUrav.getx1() <<" X2="<< newUrav.getx2();
+  
+	system("pause");
+	return 0;
+}
