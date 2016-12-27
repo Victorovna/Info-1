@@ -4,40 +4,41 @@
 #include <iomanip>
 using namespace std;
 
-const unsigned int DIMENSION1 = 7;
-const unsigned int DIMENSION2 = 7;
-
 int main() {
-	int **arr;
-	arr = new int * [DIMENSION1];          
+ setlocale(LC_ALL, "Russian"); 
+ int **arr;
+ unsigned int DIMENSION1;
+ cout<<"введите размерность матрицы";
+ cin>>DIMENSION1;
+ unsigned int DIMENSION2=DIMENSION1;
+ arr = new int * [DIMENSION1];          
     for (int i = 0; i < DIMENSION1; i++) {      
         arr[i] = new int [DIMENSION2];       
     }
-	 srand(time(0));
-	 for (int i = 0; i < DIMENSION1; i++) {
+  srand(time(0));
+  for (int i = 0; i < DIMENSION1; i++) {
         for (int j = 0; j < DIMENSION2; j++) {
             arr[i][j] = rand()%100;
         }
     }
 
-	 
+  cout<<"исходная матрица"<<endl;
     for (int i = 0; i < DIMENSION1; i++) {
         for (int j = 0; j < DIMENSION2; j++) {
             cout << setw(4) << arr[i][j];
         }
         cout << endl;
     }
-	int f;
+ int f;
 
-	for (int i = 0; i < DIMENSION1; i++) {
-        for (int j = 0; j < DIMENSION2; j++) {
-            if(i!=j)
-			{f=arr[i][j];
-			arr[i][j]=arr[j][i];
-			arr[j][i]=f;
-			}
+ for (int i = 0; i < DIMENSION1; i++) {
+        for (int j = i; j < DIMENSION2; j++) {
+   f=arr[i][j];
+   arr[i][j]=arr[j][i];
+   arr[j][i]=f;
         }
     }
+ cout<<endl<<"транспонированная матрица"<<endl;
 for (int i = 0; i < DIMENSION1; i++) {
         for (int j = 0; j < DIMENSION2; j++) {
             cout << setw(4) << arr[i][j];
