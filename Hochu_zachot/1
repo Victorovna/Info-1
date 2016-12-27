@@ -1,0 +1,21 @@
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+int _tmain()
+{
+	int arr[15];
+	for(int i=0; i<=14; i++)
+	{
+		cout<<"enter number "<<endl;
+		cin>>arr[i];
+	}
+	for(int i=0; i<=13; i++)
+	{
+		if (((arr[i]+3)!=arr[i+1])&&((arr[i]-3)!=arr[i+1]))
+			cout<<arr[i];
+	}
+	system("pause");
+	return 0;
+}
