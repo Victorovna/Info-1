@@ -1,21 +1,31 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <vector>
+ 
 using namespace std;
-
-int _tmain()
-{
-	int arr[15];
-	for(int i=0; i<=14; i++)
-	{
-		cout<<"enter number "<<endl;
-		cin>>arr[i];
-	}
-	for(int i=0; i<=13; i++)
-	{
-		if (((arr[i]+3)!=arr[i+1])&&((arr[i]-3)!=arr[i+1]))
-			cout<<arr[i];
-	}
-	system("pause");
-	return 0;
+ 
+int n, cnt;
+vector<int> d;
+ 
+int main() {
+    setlocale(LC_ALL, "russian");
+    cout << "Введите кол-во элементов" << endl;
+    cin >> n;
+    d.resize(n + 1);
+    d[n] = INT_MIN;
+    cout << "Введите элементы" << endl;
+    for (int i = 0; i < n; i++)
+        cin >> d[i];
+ 
+    cout << "Недостающие элементы" << endl;
+    for (int i = 0; i < n; i++) {
+        while (d[i] - d[i + 1] != 3 && cnt < 3) {
+            d[i] -= 3;
+            cout << d[i] << ' ';
+            cnt++;
+        }
+    }
+ 
+    return 0;
 }
