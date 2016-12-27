@@ -1,0 +1,48 @@
+#include "stdafx.h"
+#include <iostream>
+#include <list>
+
+using namespace std;
+
+void print_list(list<int> lst)
+{
+    cout<<endl;
+    list<int>::iterator begin_humen = lst.begin();
+    while(begin_humen != lst.end())cout<<*(begin_humen++)<<" ";
+      cout<<endl;
+}
+
+int main()
+{
+    int n, m;
+    list<int> humen;
+    cout<<"Enter the human number n: "; cin>>n; 
+    cout<<"Enter the m:"; cin>>m;
+      for(int i=0; i<n; ++i)
+           {
+           humen.push_back (i+1);  
+           }
+      cout<<"The number list is:"<<endl;
+      print_list(humen);
+      cout<<endl;
+      list<int>::iterator begin_humen; 
+      while(humen.size()> 2)
+          {
+           begin_humen = humen.begin();
+              for(int i=1; i<m; ++i)
+                 {
+                  if(++begin_humen == humen.end())        
+                   begin_humen = humen.begin();    
+                  }
+            humen.erase(begin_humen);
+            print_list(humen);
+          }
+      begin_humen = humen.begin();
+      if(m%2)humen.erase(begin_humen);
+      else
+      humen.erase(++begin_humen);
+      cout<<*humen.begin()<<endl;
+      
+      system("pause");
+      return 0; 
+}
