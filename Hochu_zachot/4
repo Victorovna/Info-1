@@ -1,0 +1,127 @@
+#include "stdafx.h"
+#include <iostream>
+#include <stdlib.h>
+
+typedef struct permutation {
+  int length;
+  int* data;
+} permutation;
+
+permutation init(int length){
+  permutation p = (permutation){.length = length, .data = (int*)malloc(length* sizeof(int))};
+  for (int i = 0; i < length; i++) p.data[i] = i;
+  return p;
+}
+
+void printp(permutation* p){
+  for (int i = 0; i < p->length; i++)
+    std::cout << p->data[i] << " ";
+  std::cout << std::endl;
+}
+
+void shuffle(permutation* p){
+  srand(time(NULL));
+
+  int i = p->length;
+  while (i > 0){
+    i--;
+    int j = rand() %(i+1);
+    int temp = p->data[i];
+    p->data[i] = p->data[j];
+    p->data[j] = temp;
+  }
+}
+
+int main(){
+  permutation p = init(8);
+  
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  shuffle(&p);
+  printp(&p);
+  
+  system("pause");
+  return 0;
+}
