@@ -2,6 +2,9 @@
 #include <iostream>
 #include <stdlib.h>
 
+#include <stdlib.h>
+#include <iostream>
+
 typedef struct permutation {
   int length;
   int* data;
@@ -20,12 +23,10 @@ void printp(permutation* p){
 }
 
 void shuffle(permutation* p){
-  srand(time(NULL));
-
   int i = p->length;
-  while (i > 0){
+  while (i > 1){
     i--;
-    int j = rand() %(i+1);
+    int j = rand() %i;
     int temp = p->data[i];
     p->data[i] = p->data[j];
     p->data[j] = temp;
@@ -33,94 +34,13 @@ void shuffle(permutation* p){
 }
 
 int main(){
+  srand(time(NULL));
   permutation p = init(8);
-  
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
-  shuffle(&p);
-  printp(&p);
+
+  for (int i = 0; i < 20; i++){
+    printp(&p);
+    shuffle(&p);
+  }
   
   system("pause");
   return 0;
