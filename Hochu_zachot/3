@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include <iostream> 
+#include <iostream>
+#include <string>
 using namespace std;
 
 string mapLast(char x, char r){
@@ -102,25 +103,31 @@ string convertTriplet(int num, int modifier){
     res += All[2][t];
     res += All[0][o];
   }
-  switch(o) {
-  case 0:
-    res += "";
-    break;	
-  case 5:
-  case 6:
-  case 7:
-  case 8:
-  case 9 :
+
+
+  if ((t*10+o > 9) && (t*10+o < 20)){
     res += Group[modifier][2];
-    break;
-  case 1 :
-    res += Group[modifier][0];
-    break;
-  case 2:
-  case 3:
-  case 4 :
-    res += Group[modifier][1];
-    break;	
+  } else {
+    switch(o) {
+    case 0:
+      res += "";
+      break;	
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9 :
+      res += Group[modifier][2];
+      break;
+    case 1 :
+      res += Group[modifier][0];
+      break;
+    case 2:
+    case 3:
+    case 4 :
+      res += Group[modifier][1];
+      break;	
+    }
   }
   return res;
 }
@@ -198,10 +205,10 @@ int main(){
     cout << toText(i) << endl;
   }
 
-      cout << toText(1234567890.11) << endl;
-      
+  cout << toText(1111111234567890.11) << endl;
+
+
       system("pause");
       return 0;
 
 }
-
