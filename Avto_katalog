@@ -1,0 +1,49 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+struct Avto
+{
+	string model;
+	string data;
+	string number;
+	int state;
+};
+class Avto_katalog {
+private:
+	int size;
+	int size_now;
+	Avto *mas;
+	// 2 хеш функции
+
+public:
+	Avto_katalog(int _size)
+	{
+		size = _size;
+		size_now = 0;
+		mas = new Avto[_size];
+		for (int i = 0; i < _size; i++)
+			mas[i].state = 0;
+	}
+	~Avto_katalog()
+	{
+		delete[] mas;
+	}
+
+	void print_full()
+	{
+		for (int i = 0; i < size; i++)
+			cout << i << " " << mas[i].model << " " << mas[i].data << " " << mas[i].number << " " << mas[i].state << endl;
+	}
+	// добавление
+};
+
+int main() {
+	Avto_katalog a(10);
+	a.print_full();
+
+	system("pause");
+	return 0;
+
+}
